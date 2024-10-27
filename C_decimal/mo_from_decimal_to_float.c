@@ -1,13 +1,13 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-int s21_from_decimal_to_float(s21_decimal src, float *dst) {
+int mo_from_decimal_to_float(mo_decimal src, float *dst) {
   int code = 0;
   if (!dst) {
     code = 1;
   } else if (!is_correct_decimal(src)) {
     code = 1;
     *dst = 0.0;
-  } else if (s21_is_equal(src, zero_val)) {
+  } else if (mo_is_equal(src, zero_val)) {
     // Отдельно обрабатываем 0 и -0
     int sign = get_sign(src);
     if (sign == 1) {

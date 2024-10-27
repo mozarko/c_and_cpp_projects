@@ -1,4 +1,4 @@
-#include "tests_includes/s21_tests.h"
+#include "tests_includes/mo_tests.h"
 
 int main(void) {
   run_tests();

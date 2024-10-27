@@ -1,6 +1,6 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-int s21_truncate(s21_decimal value, s21_decimal *result) {
+int mo_truncate(mo_decimal value, mo_decimal *result) {
   int code = 0;
 
   if (!result) {
@@ -12,7 +12,7 @@ int s21_truncate(s21_decimal value, s21_decimal *result) {
     // В остальных случаях производим расчет
     *result = zero_val;
     int power = get_scale(value);
-    s21_decimal tmp = value;
+    mo_decimal tmp = value;
     tmp.bits[3] = 0;
 
     tmp = binary_div(tmp, ten_pows[power], NULL);

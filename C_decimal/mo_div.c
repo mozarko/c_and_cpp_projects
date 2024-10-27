@@ -1,17 +1,17 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
+int mo_div(mo_decimal value_1, mo_decimal value_2, mo_decimal *result) {
   int code = 0;
 
   if (!result) {
     code = 4;
   } else if (!is_correct_decimal(value_1) || !is_correct_decimal(value_2)) {
     code = 4;
-    //  *result = s21_decimal_get_inf();
-  } else if (s21_is_equal(value_2, zero_val)) {
+    //  *result = mo_decimal_get_inf();
+  } else if (mo_is_equal(value_2, zero_val)) {
     // Проверяем случай, когда value_2 является нулем
     code = 3;
-    // *result = s21_decimal_get_inf();
+    // *result = mo_decimal_get_inf();
   } else {
     // В остальных случаях считаем частное
     *result = zero_val;
@@ -40,7 +40,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
       } else {
         code = 1;
       }
-      // *result = s21_decimal_get_inf();
+      // *result = mo_decimal_get_inf();
     } else {
       // В остальных случаях продолжаем вычисления и вызываем вспомогательную
       // функцию для расчетов
@@ -57,8 +57,8 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
       }
       // Обрабатываем ситуацию, что результат получился слишком маленький (0 <
       // |x| < 1e-28)
-      if (code == 0 && s21_is_not_equal(value_1, zero_val) &&
-          s21_is_equal(*result, zero_val)) {
+      if (code == 0 && mo_is_not_equal(value_1, zero_val) &&
+          mo_is_equal(*result, zero_val)) {
         code = 2;
       }
     }

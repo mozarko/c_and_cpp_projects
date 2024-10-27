@@ -1,14 +1,14 @@
-#include "../tests_includes/s21_tests.h"
+#include "../tests_includes/mo_tests.h"
 
 START_TEST(test_truncate_simple1) {
   int truncate_check = 5;
   int int_from_decimal = 0;
-  s21_decimal result;
-  s21_decimal truncate_dec = {{501, 0, 0, 0x20000}};
+  mo_decimal result;
+  mo_decimal truncate_dec = {{501, 0, 0, 0x20000}};
 
-  s21_truncate(truncate_dec, &result);
+  mo_truncate(truncate_dec, &result);
 
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -17,12 +17,12 @@ END_TEST
 
 START_TEST(test_truncate_simple2) {
   int truncate_check= 5;
-  s21_decimal truncate_dec = {{571, 0, 0, 0x20000}};
+  mo_decimal truncate_dec = {{571, 0, 0, 0x20000}};
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
 
 
@@ -32,13 +32,13 @@ END_TEST
 
 START_TEST(test_truncate_simple3) {
   int truncate_check= 5;
-  s21_decimal truncate_dec = {{57185, 0, 0, 0x40000}};
+  mo_decimal truncate_dec = {{57185, 0, 0, 0x40000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 
@@ -47,13 +47,13 @@ END_TEST
 
 START_TEST(test_truncate_simple4) {
   int truncate_check= 2855.00;
-  s21_decimal truncate_dec = {{285500, 0, 0, 0x20000}};
+  mo_decimal truncate_dec = {{285500, 0, 0, 0x20000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -61,13 +61,13 @@ END_TEST
 
 START_TEST(test_truncate_simple5) {
   int truncate_check= 12;
-  s21_decimal truncate_dec = {{12741253, 0, 0, 0x60000}};
+  mo_decimal truncate_dec = {{12741253, 0, 0, 0x60000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
@@ -76,13 +76,13 @@ END_TEST
 
 START_TEST(test_truncate_simple6) {
   int truncate_check= 5;
-  s21_decimal truncate_dec = {{55, 0, 0, 0x10000}};
+  mo_decimal truncate_dec = {{55, 0, 0, 0x10000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
@@ -91,13 +91,13 @@ END_TEST
 
 START_TEST(test_truncate_simple7) {
   int truncate_check= 5;
-  s21_decimal truncate_dec = {{54, 0, 0, 0x10000}};
+  mo_decimal truncate_dec = {{54, 0, 0, 0x10000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
@@ -106,13 +106,13 @@ END_TEST
 
 START_TEST(test_truncate_simple8) {
   int truncate_check= 5;
-  s21_decimal truncate_dec = {{56, 0, 0, 0x10000}};
+  mo_decimal truncate_dec = {{56, 0, 0, 0x10000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
@@ -121,13 +121,13 @@ END_TEST
 
 START_TEST(test_truncate_simple9) {
   int truncate_check= 5;
-  s21_decimal truncate_dec = {{551, 0, 0, 0x20000}};
+  mo_decimal truncate_dec = {{551, 0, 0, 0x20000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
@@ -136,13 +136,13 @@ END_TEST
 
 START_TEST(test_truncate_simple10) {
   int truncate_check= 5;
-  s21_decimal truncate_dec = {{549, 0, 0, 0x20000}};
+  mo_decimal truncate_dec = {{549, 0, 0, 0x20000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
@@ -151,12 +151,12 @@ END_TEST
 
 START_TEST(test_truncate_simple_neg1) {
   int truncate_check= -5;
-  s21_decimal truncate_dec = {{500, 0, 0, 0x80020000}};
+  mo_decimal truncate_dec = {{500, 0, 0, 0x80020000}};
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -164,13 +164,13 @@ END_TEST
 
 START_TEST(test_truncate_simple_neg2) {
   int truncate_check= -5;
-  s21_decimal truncate_dec = {{516, 0, 0, 0x80020000}};
+  mo_decimal truncate_dec = {{516, 0, 0, 0x80020000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -178,13 +178,13 @@ END_TEST
 
 START_TEST(test_truncate_simple_neg3) {
   int truncate_check= -52;
-  s21_decimal truncate_dec = {{527589, 0, 0, 0x80040000}};
+  mo_decimal truncate_dec = {{527589, 0, 0, 0x80040000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -192,13 +192,13 @@ END_TEST
 
 START_TEST(test_truncate_pow1) {
   int truncate_check= 154748;
-  s21_decimal truncate_dec = {{15474820, 0, 0, 0x20000}};
+  mo_decimal truncate_dec = {{15474820, 0, 0, 0x20000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -206,13 +206,13 @@ END_TEST
 
 START_TEST(test_truncate_pow2) {
   int truncate_check= 154748;
-  s21_decimal truncate_dec = {{1547482000, 0, 0, 0x40000}};
+  mo_decimal truncate_dec = {{1547482000, 0, 0, 0x40000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -221,13 +221,13 @@ END_TEST
 
 START_TEST(test_truncate_pow3) {
   int truncate_check= 12;
-  s21_decimal truncate_dec = {{1274125377, 0, 0, 0x80000}};
+  mo_decimal truncate_dec = {{1274125377, 0, 0, 0x80000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -235,13 +235,13 @@ END_TEST
 
 START_TEST(test_truncate_pow4) {
   int truncate_check= 11;
-  s21_decimal truncate_dec = {{1124574253, 0, 0, 0x80000}};
+  mo_decimal truncate_dec = {{1124574253, 0, 0, 0x80000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -249,13 +249,13 @@ END_TEST
 
 START_TEST(test_truncate_pow5) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{741253, 0, 0, 0x60000}};
+  mo_decimal truncate_dec = {{741253, 0, 0, 0x60000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -263,13 +263,13 @@ END_TEST
 
 START_TEST(test_truncate_pow6) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{74125389, 0, 0, 0x80000}};
+  mo_decimal truncate_dec = {{74125389, 0, 0, 0x80000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -277,13 +277,13 @@ END_TEST
 
 START_TEST(test_truncate_pow7) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{74125381, 0, 0, 0x80000}};
+  mo_decimal truncate_dec = {{74125381, 0, 0, 0x80000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -291,13 +291,13 @@ END_TEST
 
 START_TEST(test_truncate_pow8) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{7412538, 0, 0, 0x70000}};
+  mo_decimal truncate_dec = {{7412538, 0, 0, 0x70000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -305,13 +305,13 @@ END_TEST
 
 START_TEST(test_truncate_pow9) {
   int truncate_check= 21;
-  s21_decimal truncate_dec = {{214741253, 0, 0, 0x70000}};
+  mo_decimal truncate_dec = {{214741253, 0, 0, 0x70000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -319,13 +319,13 @@ END_TEST
 
 START_TEST(test_truncate_pow10) {
   int truncate_check= 2;
-  s21_decimal truncate_dec = {{27412537, 0, 0, 0x70000}};
+  mo_decimal truncate_dec = {{27412537, 0, 0, 0x70000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -333,13 +333,13 @@ END_TEST
 
 START_TEST(test_truncate_pow11) {
   int truncate_check= -4;
-  s21_decimal truncate_dec = {{47412553, 0, 0, 0x80070000}};
+  mo_decimal truncate_dec = {{47412553, 0, 0, 0x80070000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -348,13 +348,13 @@ END_TEST
 
 START_TEST(test_truncate_pow12) {
   int truncate_check= -48;
-  s21_decimal truncate_dec = {{487412153, 0, 0, 0x80070000}};
+  mo_decimal truncate_dec = {{487412153, 0, 0, 0x80070000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -362,13 +362,13 @@ END_TEST
 
 START_TEST(test_truncate_pow13) {
   int truncate_check= -4588524;
-  s21_decimal truncate_dec = {{458852474, 0, 0, 0x80020000}};
+  mo_decimal truncate_dec = {{458852474, 0, 0, 0x80020000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -376,13 +376,13 @@ END_TEST
 
 START_TEST(test_truncate_pow14) {
   int truncate_check= 145885;
-  s21_decimal truncate_dec = {{14588574, 0, 0, 0x20000}};
+  mo_decimal truncate_dec = {{14588574, 0, 0, 0x20000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -390,13 +390,13 @@ END_TEST
 
 START_TEST(test_truncate_pow15) {
   int truncate_check= 145885;
-  s21_decimal truncate_dec = {{1458857, 0, 0, 0x10000}};
+  mo_decimal truncate_dec = {{1458857, 0, 0, 0x10000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -404,13 +404,13 @@ END_TEST
 
 START_TEST(test_truncate_pow16) {
   int truncate_check= 145885254;
-  s21_decimal truncate_dec = {{1458852547, 0, 0, 0x10000}};
+  mo_decimal truncate_dec = {{1458852547, 0, 0, 0x10000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -418,13 +418,13 @@ END_TEST
 
 START_TEST(test_truncate_pow17) {
   int truncate_check= -145885254;
-  s21_decimal truncate_dec = {{1458852547, 0, 0, 0x80010000}};
+  mo_decimal truncate_dec = {{1458852547, 0, 0, 0x80010000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -432,13 +432,13 @@ END_TEST
 
 START_TEST(test_truncate_pow18) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{0, 0, 0, 0x0000000}};
+  mo_decimal truncate_dec = {{0, 0, 0, 0x0000000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -446,13 +446,13 @@ END_TEST
 
 START_TEST(test_truncate_pow19) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{1, 0, 0, 0x20000}};
+  mo_decimal truncate_dec = {{1, 0, 0, 0x20000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -460,13 +460,13 @@ END_TEST
 
 START_TEST(test_truncate_pow20) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{1, 0, 0, 0x80020000}};
+  mo_decimal truncate_dec = {{1, 0, 0, 0x80020000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -474,13 +474,13 @@ END_TEST
 
 START_TEST(test_truncate_pow21) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{1, 0, 0, 0x40000}};
+  mo_decimal truncate_dec = {{1, 0, 0, 0x40000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -490,13 +490,13 @@ END_TEST
 
 START_TEST(test_truncate_pow22) {
   int truncate_check= 100000;
-  s21_decimal truncate_dec = {{1000000001, 0, 0, 0x40000}};
+  mo_decimal truncate_dec = {{1000000001, 0, 0, 0x40000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -504,13 +504,13 @@ END_TEST
 
 START_TEST(test_truncate_pow23) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{1, 0, 0, 0x80040000}};
+  mo_decimal truncate_dec = {{1, 0, 0, 0x80040000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -519,14 +519,14 @@ END_TEST
 
 START_TEST(test_truncate_pow24) {
   int truncate_check= 100;
-  s21_decimal truncate_dec = {{1002, 0, 0, 0x10000}};
+  mo_decimal truncate_dec = {{1002, 0, 0, 0x10000}};
 
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 }
@@ -534,13 +534,13 @@ END_TEST
 
 START_TEST(test_truncate_pow25) {
   int truncate_check= 0;
-  s21_decimal truncate_dec = {{1, 0, 0, 0x80000}};
+  mo_decimal truncate_dec = {{1, 0, 0, 0x80000}};
 
   int int_from_decimal = 0;
-  s21_decimal result;
+  mo_decimal result;
 
-  s21_truncate(truncate_dec, &result);
-  s21_from_decimal_to_int(result, &int_from_decimal);
+  mo_truncate(truncate_dec, &result);
+  mo_from_decimal_to_int(result, &int_from_decimal);
 
   ck_assert_int_eq(truncate_check, int_from_decimal);
 
@@ -549,40 +549,40 @@ END_TEST
 
 
 START_TEST(test_truncate_simple_check_code1) {
-  s21_decimal truncate_dec = {{1, 0, 0, 0x80000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{1, 0, 0, 0x80000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code2) {
-  s21_decimal truncate_dec = {{1000000001, 0, 0, 0x80040000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{1000000001, 0, 0, 0x80040000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code3) {
-  s21_decimal truncate_dec = {{1, 0, 0, 0x20000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{1, 0, 0, 0x20000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code4) {
-  s21_decimal truncate_dec = {{458741253, 0, 0, 0x80070000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{458741253, 0, 0, 0x80070000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 
@@ -590,70 +590,70 @@ START_TEST(test_truncate_simple_check_code4) {
 END_TEST
 
 START_TEST(test_truncate_simple_check_code5) {
-  s21_decimal truncate_dec = {{214741253, 0, 0, 0x70000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{214741253, 0, 0, 0x70000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code6) {
-  s21_decimal truncate_dec = {{74125389, 0, 0, 0x80000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{74125389, 0, 0, 0x80000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code7) {
-  s21_decimal truncate_dec = {{1124574253, 0, 0, 0x80000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{1124574253, 0, 0, 0x80000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code8) {
-  s21_decimal truncate_dec = {{0, 0, 0, 0}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{0, 0, 0, 0}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code9) {
-  s21_decimal truncate_dec = {{0, 0, 0, 0x80000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{0, 0, 0, 0x80000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code10) {
-  s21_decimal truncate_dec = {{2741253, 0, 0, 0x70000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{2741253, 0, 0, 0x70000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
 END_TEST
 
 START_TEST(test_truncate_simple_check_code11) {
-  s21_decimal truncate_dec = {{1, 0, 0, 0x20000}};
-  s21_decimal result;
+  mo_decimal truncate_dec = {{1, 0, 0, 0x20000}};
+  mo_decimal result;
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 0);
 }
@@ -668,10 +668,10 @@ START_TEST(test_error1) {
   int decimal1_3 = 0b111;
   int decimal1_4 = 0b00000000111111110000000000000000;
 
-  s21_decimal result;
-  s21_decimal truncate_dec = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal result;
+  mo_decimal truncate_dec = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 1);
 }
@@ -687,10 +687,10 @@ START_TEST(test_error2) {
   int decimal1_3 = 0b111;
   int decimal1_4 = 0b01100000000111000000000000000011;
 
-  s21_decimal result;
-  s21_decimal truncate_dec = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal result;
+  mo_decimal truncate_dec = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 1);
 }
@@ -705,19 +705,19 @@ START_TEST(test_error3) {
   int decimal1_3 = 0b111;
   int decimal1_4 = 0b11111111111111111111111111111111;
 
-  s21_decimal result;
-  s21_decimal truncate_dec = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal result;
+  mo_decimal truncate_dec = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
 
-  int res = s21_truncate(truncate_dec, &result);
+  int res = mo_truncate(truncate_dec, &result);
 
   ck_assert_int_eq(res, 1);
 }
 END_TEST
 
 START_TEST(test_error_result_is_null) {
-  s21_decimal truncate_dec = {{0, 0, 0, 0}};
+  mo_decimal truncate_dec = {{0, 0, 0, 0}};
 
-  int res =  s21_truncate(truncate_dec, NULL);
+  int res =  mo_truncate(truncate_dec, NULL);
   ck_assert_int_eq(res, 1);
 }
 

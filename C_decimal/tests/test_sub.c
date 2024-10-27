@@ -1,10 +1,10 @@
-#include "../tests_includes/s21_tests.h"
+#include "../tests_includes/mo_tests.h"
 
 START_TEST(test_sub_simple1) {
-  s21_decimal decimal1 = {{0x5, 0, 0, 0}};
-  s21_decimal decimal2 = {{0x8, 0, 0, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{0x5, 0, 0, 0}};
+  mo_decimal decimal2 = {{0x8, 0, 0, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), "-3");
 }
@@ -17,10 +17,10 @@ START_TEST(test_sub_simple2) {
   char res_to_str[50];
   sprintf(res_to_str, "%d", res);
 
-  s21_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
-  s21_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
+  mo_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -33,10 +33,10 @@ START_TEST(test_sub_simple3) {
   char res_to_str[50];
   sprintf(res_to_str, "%d", res);
 
-  s21_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
-  s21_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
+  mo_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -49,10 +49,10 @@ START_TEST(test_sub_simple4) {
   char res_to_str[50];
   sprintf(res_to_str, "%d", res);
 
-  s21_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
-  s21_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
+  mo_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -65,10 +65,10 @@ START_TEST(test_sub_simple5) {
   char res_to_str[50];
   sprintf(res_to_str, "%d", res);
 
-  s21_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
-  s21_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
+  mo_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -82,10 +82,10 @@ START_TEST(test_sub_simple_neg1) {
   char res_to_str[50];
   sprintf(res_to_str, "%d", res);
 
-  s21_decimal decimal1 = {{simple_decimal1_neg, 0, 0, 0x80000000}};
-  s21_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{simple_decimal1_neg, 0, 0, 0x80000000}};
+  mo_decimal decimal2 = {{simple_decimal2, 0, 0, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -100,10 +100,10 @@ START_TEST(test_sub_simple_neg2) {
   char res_to_str[50];
   sprintf(res_to_str, "%d", res);
 
-  s21_decimal decimal1 = {{simple_decimal1_neg, 0, 0, 0x80000000}};
-  s21_decimal decimal2 = {{simple_decimal2_neg, 0, 0, 0x80000000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{simple_decimal1_neg, 0, 0, 0x80000000}};
+  mo_decimal decimal2 = {{simple_decimal2_neg, 0, 0, 0x80000000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -117,80 +117,80 @@ START_TEST(test_sub_simple_neg3) {
   char res_to_str[50];
   sprintf(res_to_str, "%d", res);
 
-  s21_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
-  s21_decimal decimal2 = {{simple_decimal2_neg, 0, 0, 0x80000000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{simple_decimal1, 0, 0, 0}};
+  mo_decimal decimal2 = {{simple_decimal2_neg, 0, 0, 0x80000000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
 END_TEST
 
 START_TEST(test_sub_simple_check_code1) {
-  s21_decimal decimal1 = {{0x5, 0, 0, 0}};
-  s21_decimal decimal2 = {{0x8, 0, 0, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{0x5, 0, 0, 0}};
+  mo_decimal decimal2 = {{0x8, 0, 0, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 0);
 }
 END_TEST
 
 START_TEST(test_sub_simple_check_code2) {
-  s21_decimal decimal1 = {{85070, 0, 0, 0}};
-  s21_decimal decimal2 = {{798, 0, 0, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{85070, 0, 0, 0}};
+  mo_decimal decimal2 = {{798, 0, 0, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 0);
 }
 END_TEST
 
 START_TEST(test_sub_simple_check_code3) {
-  s21_decimal decimal1 = {{0, 0, 0, 0}};
-  s21_decimal decimal2 = {{798, 0, 0, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{0, 0, 0, 0}};
+  mo_decimal decimal2 = {{798, 0, 0, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 0);
 }
 END_TEST
 
 START_TEST(test_sub_simple_check_code4) {
-  s21_decimal decimal1 = {{86798, 0, 0, 0}};
-  s21_decimal decimal2 = {{0, 0, 0, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{86798, 0, 0, 0}};
+  mo_decimal decimal2 = {{0, 0, 0, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 0);
 }
 END_TEST
 
 START_TEST(test_sub_simple_check_code5) {
-  s21_decimal decimal1 = {{86798, 0, 0, 0x80000000}};
-  s21_decimal decimal2 = {{0, 0, 0, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{86798, 0, 0, 0x80000000}};
+  mo_decimal decimal2 = {{0, 0, 0, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 0);
 }
 END_TEST
 
 START_TEST(test_sub_simple_check_code6) {
-  s21_decimal decimal1 = {{0, 0, 0, 0}};
-  s21_decimal decimal2 = {{484456, 0, 0, 0x80000000}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{0, 0, 0, 0}};
+  mo_decimal decimal2 = {{484456, 0, 0, 0x80000000}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 0);
 }
 END_TEST
 
 START_TEST(test_sub_simple_check_code7) {
-  s21_decimal decimal1 = {{845664, 0, 0, 0x80000000}};
-  s21_decimal decimal2 = {{484456, 0, 0, 0x80000000}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{845664, 0, 0, 0x80000000}};
+  mo_decimal decimal2 = {{484456, 0, 0, 0x80000000}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 0);
 }
@@ -203,10 +203,10 @@ START_TEST(test_sub_simple_float_equal_small_pow1) {
   char res_to_str[50];
   sprintf(res_to_str, "%.2f", res);
 
-  s21_decimal decimal1 = {{7756, 0, 0, 0x20000}};
-  s21_decimal decimal2 = {{58912, 0, 0, 0x20000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{7756, 0, 0, 0x20000}};
+  mo_decimal decimal2 = {{58912, 0, 0, 0x20000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -219,10 +219,10 @@ START_TEST(test_sub_simple_float_equal_small_pow2) {
   char res_to_str[50];
   sprintf(res_to_str, "%.2f", res);
 
-  s21_decimal decimal1 = {{56, 0, 0, 0x20000}};
-  s21_decimal decimal2 = {{12, 0, 0, 0x20000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{56, 0, 0, 0x20000}};
+  mo_decimal decimal2 = {{12, 0, 0, 0x20000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -235,10 +235,10 @@ START_TEST(test_sub_simple_float_equal_small_pow3) {
   char res_to_str[50];
   sprintf(res_to_str, "%.2f", res);
 
-  s21_decimal decimal1 = {{56, 0, 0, 0x20000}};
-  s21_decimal decimal2 = {{5879812, 0, 0, 0x20000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{56, 0, 0, 0x20000}};
+  mo_decimal decimal2 = {{5879812, 0, 0, 0x20000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -251,10 +251,10 @@ START_TEST(test_sub_simple_float_equal_small_pow4) {
   char res_to_str[50];
   sprintf(res_to_str, "%.2f", res);
 
-  s21_decimal decimal1 = {{54987955, 0, 0, 0x20000}};
-  s21_decimal decimal2 = {{12, 0, 0, 0x20000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{54987955, 0, 0, 0x20000}};
+  mo_decimal decimal2 = {{12, 0, 0, 0x20000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -267,10 +267,10 @@ START_TEST(test_sub_simple_float_neg_equal_small_pow1) {
   char res_to_str[50];
   sprintf(res_to_str, "%.2f", res);
 
-  s21_decimal decimal1 = {{54987955, 0, 0, 0x80020000}};
-  s21_decimal decimal2 = {{12, 0, 0, 0x20000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{54987955, 0, 0, 0x80020000}};
+  mo_decimal decimal2 = {{12, 0, 0, 0x20000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -283,10 +283,10 @@ START_TEST(test_sub_simple_float_neg_equal_small_pow2) {
   char res_to_str[50];
   sprintf(res_to_str, "%.2f", res);
 
-  s21_decimal decimal1 = {{54987955, 0, 0, 0x20000}};
-  s21_decimal decimal2 = {{12, 0, 0, 0x80020000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{54987955, 0, 0, 0x20000}};
+  mo_decimal decimal2 = {{12, 0, 0, 0x80020000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -299,10 +299,10 @@ START_TEST(test_sub_simple_float_neg_equal_small_pow3) {
   char res_to_str[50];
   sprintf(res_to_str, "%.2f", res);
 
-  s21_decimal decimal1 = {{54987955, 0, 0, 0x80020000}};
-  s21_decimal decimal2 = {{12, 0, 0, 0x80020000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{54987955, 0, 0, 0x80020000}};
+  mo_decimal decimal2 = {{12, 0, 0, 0x80020000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
 END_TEST
@@ -314,10 +314,10 @@ START_TEST(test_sub_simple_float_diff_small_pow1) {
   char res_to_str[50];
   sprintf(res_to_str, "%.6f", res);
 
-  s21_decimal decimal1 = {{78569874, 0, 0, 0x60000}};
-  s21_decimal decimal2 = {{948, 0, 0, 0x20000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{78569874, 0, 0, 0x60000}};
+  mo_decimal decimal2 = {{948, 0, 0, 0x20000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -330,10 +330,10 @@ START_TEST(test_sub_simple_float_diff_small_pow2) {
   char res_to_str[50];
   sprintf(res_to_str, "%.8f", res);
 
-  s21_decimal decimal1 = {{78569874, 0, 0, 0x60000}};
-  s21_decimal decimal2 = {{948224568, 0, 0, 0x80000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{78569874, 0, 0, 0x60000}};
+  mo_decimal decimal2 = {{948224568, 0, 0, 0x80000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -346,10 +346,10 @@ START_TEST(test_sub_simple_float_neg_diff_small_pow1) {
   char res_to_str[50];
   sprintf(res_to_str, "%.8f", res);
 
-  s21_decimal decimal1 = {{78569874, 0, 0, 0x80060000}};
-  s21_decimal decimal2 = {{948224568, 0, 0, 0x80000}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{78569874, 0, 0, 0x80060000}};
+  mo_decimal decimal2 = {{948224568, 0, 0, 0x80000}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -366,10 +366,10 @@ START_TEST(test_sub_decimal1) {
 
   char res_to_str[50] = "-18557424799041007392455";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -386,10 +386,10 @@ START_TEST(test_sub_decimal2) {
 
   char res_to_str[50] = "-141117593163639082224839";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -406,10 +406,10 @@ START_TEST(test_sub_decimal3) {
 
   char res_to_str[50] = "-9223372041008009179223";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -424,10 +424,10 @@ START_TEST(test_sub_decimal_overbig1) {
   int decimal2_2 = 0b1111000011100011;
   int decimal2_3 = 0b1111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
   ck_assert_int_eq(code, 2);
 }
 END_TEST
@@ -441,10 +441,10 @@ START_TEST(test_sub_decimal_overbig2) {
   int decimal2_2 = 0b111100001111111111100011;
   int decimal2_3 = 0b1111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
   ck_assert_int_eq(code, 2);
 }
 END_TEST
@@ -458,10 +458,10 @@ START_TEST(test_sub_decimal_overbig3) {
   int decimal2_2 = 0b111100001111111111100011;
   int decimal2_3 = 0b1111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
   ck_assert_int_eq(code, 2);
 }
 END_TEST
@@ -475,10 +475,10 @@ START_TEST(test_sub_decimal_overbig4) {
   int decimal2_2 = 0b11111111111111111111111111111111;
   int decimal2_3 = 0b11111111111111111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
   ck_assert_int_eq(code, 2);
 }
 END_TEST
@@ -493,10 +493,10 @@ START_TEST(test_sub_decimal_overbig5) {
   int decimal2_3 = 0b0;
   char res_to_str[] = "-79228162514264337593543950335";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
 END_TEST
@@ -510,10 +510,10 @@ START_TEST(test_sub_decimal_overbig1_neg) {
   int decimal2_2 = 0b111100001111111111100011;
   int decimal2_3 = 0b1111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 2);
 }
@@ -528,10 +528,10 @@ START_TEST(test_sub_decimal_overbig2_neg) {
   int decimal2_2 = 0b11111111111111111111111111111111;
   int decimal2_3 = 0b11111111111111111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
   ck_assert_int_eq(code, 2);
 }
 END_TEST
@@ -545,10 +545,10 @@ START_TEST(test_sub_decimal_big1_neg) {
   int decimal2_2 = 0b111100001111111111100011;
   int decimal2_3 = 0b1111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 2);
 }
@@ -563,10 +563,10 @@ START_TEST(test_sub_decimal_big2_neg) {
   int decimal2_2 = 0b111100001111111111100011;
   int decimal2_3 = 0b1111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0x80000000}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 2);
 }
@@ -583,10 +583,10 @@ START_TEST(test_sub_decimal_zero1) {
 
   char res_to_str[50] = "0";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -603,10 +603,10 @@ START_TEST(test_sub_decimal_zero2) {
 
   char res_to_str[50] = "79228162495817593519834398720";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -623,10 +623,10 @@ START_TEST(test_sub_decimal_zero3) {
 
   char res_to_str[50] = "79228162514264337593543950335";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -643,10 +643,10 @@ START_TEST(test_sub_decimal_zero4) {
 
   char res_to_str[50] = "-79228162514264337593543950335";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -663,10 +663,10 @@ START_TEST(test_sub_decimal_zero5) {
 
   char res_to_str[50] = "1";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, 0}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, 0}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -685,10 +685,10 @@ START_TEST(test_sub_decimal_oversmall1) {
 
   char res_to_str[50] = "-0.0000000000000000000000000001";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -707,10 +707,10 @@ START_TEST(test_sub_decimal_oversmall2) {
 
   char res_to_str[50] = "0.0000000000000000000000000001";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -729,10 +729,10 @@ START_TEST(test_sub_decimal_oversmall3) {
 
   char res_to_str[50] = "-0.0000000000000000000000000002";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -751,10 +751,10 @@ START_TEST(test_sub_decimal_oversmall4) {
 
   char res_to_str[50] = "0";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -773,10 +773,10 @@ START_TEST(test_sub_decimal_oversmall5) {
 
   char res_to_str[50] = "0.0000000000000000000000000070";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -793,10 +793,10 @@ START_TEST(test_sub_decimal_oversmall6) {
   int decimal2_3 = 0b0;
   int decimal2_4 = 0b10000000000111000000000000000000;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 4);
 }
@@ -815,10 +815,10 @@ START_TEST(test_sub_decimal_smallpow1) {
 
   char res_to_str[50] = "7.922816251426433759354395034";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -837,10 +837,10 @@ START_TEST(test_sub_decimal_smallpow2) {
 
   char res_to_str[50] = "7.9228162514264337593543950334";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -859,10 +859,10 @@ START_TEST(test_sub_decimal_smallpow3) {
 
   char res_to_str[50] = "7.9228162514264337593543950333";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -881,10 +881,10 @@ START_TEST(test_sub_decimal_smallpow4) {
 
   char res_to_str[50] = "7.9228162514264337589248983040";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
@@ -903,19 +903,19 @@ START_TEST(test_sub_decimal_smallpow5) {
 
   char res_to_str[50] = "-15.845632502852867518708790067";
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  mo_sub(decimal1, decimal2, &result);
 
   ck_assert_str_eq(decimal_to_string(result), res_to_str);
 }
 END_TEST
 
 START_TEST(test_error_result_is_null) {
-  s21_decimal decimal1 = {{0, 0, 0, 0}};
-  s21_decimal decimal2 = {{0x1, 0, 0, 0}};
-  int code = s21_sub(decimal1, decimal2, NULL);
+  mo_decimal decimal1 = {{0, 0, 0, 0}};
+  mo_decimal decimal2 = {{0x1, 0, 0, 0}};
+  int code = mo_sub(decimal1, decimal2, NULL);
 
   ck_assert_int_eq(code, 4);
 }
@@ -934,10 +934,10 @@ START_TEST(test_error1) {
   int decimal2_3 = 0b111;
   int decimal2_4 = 0b00000000000111000000000000000000;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 4);
 }
@@ -957,10 +957,10 @@ START_TEST(test_error2) {
   int decimal2_3 = 0b111;
   int decimal2_4 = 0b00000000000111000000000000000000;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 4);
 }
@@ -979,10 +979,10 @@ START_TEST(test_error3) {
   int decimal2_3 = 0b111;
   int decimal2_4 = 0b11111111111111111111111111111111;
 
-  s21_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
-  s21_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
-  s21_decimal result;
-  int code = s21_sub(decimal1, decimal2, &result);
+  mo_decimal decimal1 = {{decimal1_1, decimal1_2, decimal1_3, decimal1_4}};
+  mo_decimal decimal2 = {{decimal2_1, decimal2_2, decimal2_3, decimal2_4}};
+  mo_decimal result;
+  int code = mo_sub(decimal1, decimal2, &result);
 
   ck_assert_int_eq(code, 4);
 }

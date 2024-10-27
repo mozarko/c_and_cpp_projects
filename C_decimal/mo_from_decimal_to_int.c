@@ -1,6 +1,6 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-int s21_from_decimal_to_int(s21_decimal src, int *dst) {
+int mo_from_decimal_to_int(mo_decimal src, int *dst) {
   int code = 0;
 
   if (!dst) {
@@ -10,14 +10,14 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
     *dst = 0;
   } else {
     *dst = 0;
-    s21_decimal truncated_decimal = zero_val;
+    mo_decimal truncated_decimal = zero_val;
     // Отбрасываем дробную часть decimal
-    s21_truncate(src, &truncated_decimal);
+    mo_truncate(src, &truncated_decimal);
 
-    if (s21_is_less(truncated_decimal, min_int_val) == 1) {
+    if (mo_is_less(truncated_decimal, min_int_val) == 1) {
       // Если decimal меньше -2147483648, то преобразовать нельзя
       code = 1;
-    } else if (s21_is_greater(truncated_decimal, max_int_val) == 1) {
+    } else if (mo_is_greater(truncated_decimal, max_int_val) == 1) {
       // Если decimal больше 2147483647, то преобразовать нельзя
       code = 1;
     } else {

@@ -1,6 +1,6 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-int s21_from_int_to_decimal(int src, s21_decimal *dst) {
+int mo_from_int_to_decimal(int src, mo_decimal *dst) {
   int code = 0;
 
   if (!dst) {

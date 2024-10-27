@@ -1,12 +1,12 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-int s21_is_less(s21_decimal value_1, s21_decimal value_2) {
+int mo_is_less(mo_decimal value_1, mo_decimal value_2) {
   int code = 0;
 
   int sign1 = get_sign(value_1);
   int sign2 = get_sign(value_2);
 
-  if (s21_is_equal(value_1, zero_val) && s21_is_equal(value_2, zero_val)) {
+  if (mo_is_equal(value_1, zero_val) && mo_is_equal(value_2, zero_val)) {
     // Если оба 0, то всегда false
     code = 0;
   } else if (sign1 == 1 && sign2 == 0) {

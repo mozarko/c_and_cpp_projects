@@ -1,12 +1,12 @@
-#ifndef S21_TESTS_H
-#define S21_TESTS_H
+#ifndef mo_TESTS_H
+#define mo_TESTS_H
 
 #include <check.h>
 #include <inttypes.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "../s21_decimal.h"
+#include "../mo_decimal.h"
 
 Suite *suite_add(void);
 Suite *suite_sub(void);

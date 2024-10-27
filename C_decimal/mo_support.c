@@ -1,7 +1,7 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-s21_decimal binary_sub(s21_decimal num1, s21_decimal num2) {
-  s21_decimal result;
+mo_decimal binary_sub(mo_decimal num1, mo_decimal num2) {
+  mo_decimal result;
   num2 = binary_not(num2);
   num2 = binary_add(num2, one_val);
   result = binary_add(num1, num2);
@@ -22,12 +22,12 @@ big_decimal binary_sub_big(big_decimal num1, big_decimal num2) {
   return result;
 }
 
-s21_decimal binary_add(s21_decimal num1, s21_decimal num2) {
-  s21_decimal result = num1;
-  s21_decimal tmp = num2;
+mo_decimal binary_add(mo_decimal num1, mo_decimal num2) {
+  mo_decimal result = num1;
+  mo_decimal tmp = num2;
 
   while (!binary_equal_zero(tmp)) {
-    s21_decimal overflow_bits = binary_and(result, tmp);
+    mo_decimal overflow_bits = binary_and(result, tmp);
     overflow_bits = binary_shift_left(overflow_bits, 1);
     result = binary_xor(result, tmp);
     tmp = overflow_bits;
@@ -56,8 +56,8 @@ big_decimal binary_add_big(big_decimal num1, big_decimal num2) {
   return result;
 }
 
-s21_decimal binary_xor(s21_decimal num1, s21_decimal num2) {
-  s21_decimal result = zero_val;
+mo_decimal binary_xor(mo_decimal num1, mo_decimal num2) {
+  mo_decimal result = zero_val;
   result.bits[0] = num1.bits[0] ^ num2.bits[0];
   result.bits[1] = num1.bits[1] ^ num2.bits[1];
   result.bits[2] = num1.bits[2] ^ num2.bits[2];
@@ -66,8 +66,8 @@ s21_decimal binary_xor(s21_decimal num1, s21_decimal num2) {
   return result;
 }
 
-s21_decimal binary_and(s21_decimal num1, s21_decimal num2) {
-  s21_decimal result = zero_val;
+mo_decimal binary_and(mo_decimal num1, mo_decimal num2) {
+  mo_decimal result = zero_val;
 
   result.bits[0] = num1.bits[0] & num2.bits[0];
   result.bits[1] = num1.bits[1] & num2.bits[1];
@@ -77,7 +77,7 @@ s21_decimal binary_and(s21_decimal num1, s21_decimal num2) {
   return result;
 }
 
-big_decimal binary_mul(s21_decimal num1, s21_decimal num2) {
+big_decimal binary_mul(mo_decimal num1, mo_decimal num2) {
   big_decimal result = {{zero_val, zero_val}};
   big_decimal tmp = decimal_to_big_decimal(num1);
 
@@ -93,7 +93,7 @@ big_decimal binary_mul(s21_decimal num1, s21_decimal num2) {
   return result;
 }
 
-big_decimal binary_mul_big(big_decimal num1, s21_decimal num2) {
+big_decimal binary_mul_big(big_decimal num1, mo_decimal num2) {
   big_decimal int256_result = decimal_to_big_decimal(zero_val);
   big_decimal int256_tmp1 = num1;
 
@@ -110,8 +110,8 @@ big_decimal binary_mul_big(big_decimal num1, s21_decimal num2) {
   return int256_result;
 }
 
-s21_decimal binary_not(s21_decimal num) {
-  s21_decimal result = zero_val;
+mo_decimal binary_not(mo_decimal num) {
+  mo_decimal result = zero_val;
   result.bits[0] = ~num.bits[0];
   result.bits[1] = ~num.bits[1];
   result.bits[2] = ~num.bits[2];
@@ -120,14 +120,14 @@ s21_decimal binary_not(s21_decimal num) {
   return result;
 }
 
-s21_decimal binary_div(s21_decimal num1, s21_decimal num2,
-                       s21_decimal *remainder) {
-  s21_decimal result;
+mo_decimal binary_div(mo_decimal num1, mo_decimal num2,
+                       mo_decimal *remainder) {
+  mo_decimal result;
 
   // Рассчитываемый в алгоритме частичный остаток при расчетах
-  s21_decimal partial_remainder = zero_val;
+  mo_decimal partial_remainder = zero_val;
   // Рассчитываемое в алгоритме частное
-  s21_decimal quotient = zero_val;
+  mo_decimal quotient = zero_val;
 
   if (binary_equal_zero(num1)) {
     // Сначала заполняем результаты для частного случая, когда делимое равно 0
@@ -148,9 +148,9 @@ s21_decimal binary_div(s21_decimal num1, s21_decimal num2,
     int shift = left1 - left2;
 
     // Сдвинутый делитель
-    s21_decimal shifted_divisor = binary_shift_left(num2, shift);
+    mo_decimal shifted_divisor = binary_shift_left(num2, shift);
     // Делимое для промежуточных расчетов, на первом этапе равно decimal1
-    s21_decimal dividend = num1;
+    mo_decimal dividend = num1;
 
     // Флаг необходимости проводить вычитание (Шаг 5 алгоритма).
     // На первой итерации всегда требуется вычитать
@@ -300,7 +300,7 @@ big_decimal binary_div_big(big_decimal num1, big_decimal num2,
   return result;
 }
 
-int binary_compare(s21_decimal num1, s21_decimal num2) {
+int binary_compare(mo_decimal num1, mo_decimal num2) {
   int result = 0;
 
   for (int i = 128 - 1; i >= 0; i--) {
@@ -333,13 +333,13 @@ int binary_compare_big(big_decimal num1, big_decimal num2) {
   return compare;
 }
 
-int binary_equal_zero(s21_decimal num) {
+int binary_equal_zero(mo_decimal num) {
   return num.bits[0] == 0 && num.bits[1] == 0 && num.bits[2] == 0 &&
          num.bits[3] == 0;
 }
 
-s21_decimal binary_shift_right_one(s21_decimal num) {
-  s21_decimal result = zero_val;
+mo_decimal binary_shift_right_one(mo_decimal num) {
+  mo_decimal result = zero_val;
 
   int b3 = bit_is_on_int(num.bits[3], 0);
   unsigned int result3 = num.bits[3];
@@ -375,8 +375,8 @@ s21_decimal binary_shift_right_one(s21_decimal num) {
   return result;
 }
 
-s21_decimal binary_shift_right(s21_decimal num, int shift) {
-  s21_decimal result = num;
+mo_decimal binary_shift_right(mo_decimal num, int shift) {
+  mo_decimal result = num;
   while (shift > 0) {
     result = binary_shift_right_one(result);
     --shift;
@@ -400,8 +400,8 @@ big_decimal binary_shift_right_big(big_decimal num, int shift) {
   return result;
 }
 
-s21_decimal binary_shift_left_one(s21_decimal num) {
-  s21_decimal result = zero_val;
+mo_decimal binary_shift_left_one(mo_decimal num) {
+  mo_decimal result = zero_val;
 
   int b0 = bit_is_on_int(num.bits[0], 32 - 1);
   unsigned int result0 = num.bits[0];
@@ -437,8 +437,8 @@ s21_decimal binary_shift_left_one(s21_decimal num) {
   return result;
 }
 
-s21_decimal binary_shift_left(s21_decimal num, int shift) {
-  s21_decimal result = num;
+mo_decimal binary_shift_left(mo_decimal num, int shift) {
+  mo_decimal result = num;
   while (shift > 0) {
     result = binary_shift_left_one(result);
     --shift;
@@ -462,9 +462,9 @@ big_decimal binary_shift_left_big(big_decimal num, int shift) {
   return result;
 }
 
-int get_sign(s21_decimal num) { return (num.bits[3] >> 31) & 1; }
+int get_sign(mo_decimal num) { return (num.bits[3] >> 31) & 1; }
 
-int get_scale(s21_decimal num) { return (num.bits[3] >> 16) & 0xFF; }
+int get_scale(mo_decimal num) { return (num.bits[3] >> 16) & 0xFF; }
 
 int get_shift_to_decimal(big_decimal num) {
   int cnt = 0;
@@ -501,7 +501,7 @@ int get_shift_to_decimal(big_decimal num) {
   return cnt;
 }
 
-int check_max_bit(s21_decimal num) {
+int check_max_bit(mo_decimal num) {
   int result = -1;
   for (int i = 128 - 1; i >= 0; i--) {
     if (bit_is_on(num, i)) {
@@ -513,20 +513,20 @@ int check_max_bit(s21_decimal num) {
   return result;
 }
 
-void set_sign(s21_decimal *num, int sign) {
+void set_sign(mo_decimal *num, int sign) {
   num->bits[3] = (num->bits[3] & 0x7FFFFFFF) | ((sign & 1U) << 31);
 }
 
-void set_scale(s21_decimal *num, int scale) { num->bits[3] |= scale << 16; }
+void set_scale(mo_decimal *num, int scale) { num->bits[3] |= scale << 16; }
 
 int set_bit_int(int number, int index) { return number | (1U << index); }
 
-s21_decimal set_bit(s21_decimal num, int index) {
+mo_decimal set_bit(mo_decimal num, int index) {
   num.bits[index / 32] = set_bit_int(num.bits[index / 32], index % 32);
   return num;
 }
 
-int is_correct_decimal(s21_decimal num) {
+int is_correct_decimal(mo_decimal num) {
   int code = 1;
 
   if ((num.bits[3] & 0xFFFF) != 0 ||
@@ -544,13 +544,13 @@ int is_correct_decimal(s21_decimal num) {
   return code;
 }
 
-int bit_is_on(s21_decimal num, int index) {
+int bit_is_on(mo_decimal num, int index) {
   return !!(num.bits[index / 32] & (1U << index % 32));
 }
 
 int bit_is_on_int(int number, int index) { return !!(number & (1U << index)); }
 
-char *decimal_to_string(s21_decimal num) {
+char *decimal_to_string(mo_decimal num) {
   __int128_t res = 0;
   int sign = get_sign(num);
   int scale = get_scale(num);
@@ -591,7 +591,7 @@ char *decimal_to_string(s21_decimal num) {
   return str;
 }
 
-big_decimal decimal_to_big_decimal(s21_decimal num) {
+big_decimal decimal_to_big_decimal(mo_decimal num) {
   big_decimal result = {{zero_val, zero_val}};
   num.bits[3] = 0;
   result.decimals[0] = num;
@@ -613,13 +613,13 @@ int float_exp_from_string(char *str) {
   return result;
 }
 
-s21_decimal float_string_to_decimal(char *str) {
+mo_decimal float_string_to_decimal(char *str) {
   int digits_counter = 27;
-  s21_decimal result = zero_val;
+  mo_decimal result = zero_val;
   char *ptr = str;
 
   // Получаем в любом случае заново степень float из научной записи, а не
-  // передаем полученную ранее в s21_from_float_to_decimal, т.к. она могла
+  // передаем полученную ранее в mo_from_float_to_decimal, т.к. она могла
   // измениться из-за округления
   int exp = float_exp_from_string(str);
 
@@ -631,9 +631,9 @@ s21_decimal float_string_to_decimal(char *str) {
     } else if (*ptr >= '0' && *ptr <= '9') {
       // Переводим цифры в строке в decimal, начиная с первой, используя
       // арифметику decimal
-      s21_decimal tmp = zero_val;
-      s21_mul(decimal_from_char(*ptr), ten_pows[digits_counter], &tmp);
-      s21_add(result, tmp, &result);
+      mo_decimal tmp = zero_val;
+      mo_mul(decimal_from_char(*ptr), ten_pows[digits_counter], &tmp);
+      mo_add(result, tmp, &result);
       --digits_counter;
       ++ptr;
     } else {
@@ -646,23 +646,23 @@ s21_decimal float_string_to_decimal(char *str) {
 
   if (exp > 0) {
     // Для положительной степени производим умножение на 10^exp
-    s21_mul(result, ten_pows[exp], &result);
+    mo_mul(result, ten_pows[exp], &result);
   } else if (exp < 0) {
     // Для отрицательной степени производим деление на 10^exp
     if (exp < -28) {
       // Отдельно обрабатываем очень маленькие степени, т.к. мы не сможем
       // поделить больше чем на 10^28
-      s21_div(result, ten_pows[28], &result);
+      mo_div(result, ten_pows[28], &result);
       exp += 28;
     }
-    s21_div(result, ten_pows[-exp], &result);
+    mo_div(result, ten_pows[-exp], &result);
   }
 
   return result;
 }
 
-s21_decimal decimal_from_char(char c) {
-  s21_decimal result;
+mo_decimal decimal_from_char(char c) {
+  mo_decimal result;
 
   switch (c) {
     case '0':
@@ -672,28 +672,28 @@ s21_decimal decimal_from_char(char c) {
       result = one_val;
       break;
     case '2':
-      s21_from_int_to_decimal(2, &result);
+      mo_from_int_to_decimal(2, &result);
       break;
     case '3':
-      s21_from_int_to_decimal(3, &result);
+      mo_from_int_to_decimal(3, &result);
       break;
     case '4':
-      s21_from_int_to_decimal(4, &result);
+      mo_from_int_to_decimal(4, &result);
       break;
     case '5':
-      s21_from_int_to_decimal(5, &result);
+      mo_from_int_to_decimal(5, &result);
       break;
     case '6':
-      s21_from_int_to_decimal(6, &result);
+      mo_from_int_to_decimal(6, &result);
       break;
     case '7':
-      s21_from_int_to_decimal(7, &result);
+      mo_from_int_to_decimal(7, &result);
       break;
     case '8':
-      s21_from_int_to_decimal(8, &result);
+      mo_from_int_to_decimal(8, &result);
       break;
     case '9':
-      s21_from_int_to_decimal(9, &result);
+      mo_from_int_to_decimal(9, &result);
       break;
   }
 
@@ -701,7 +701,7 @@ s21_decimal decimal_from_char(char c) {
 }
 
 
-void print_decimal(s21_decimal num) {
+void print_decimal(mo_decimal num) {
   for (int i = 3; i >= 0; i--) print_binary(num.bits[i]);
   printf("\n");
 }
@@ -718,10 +718,10 @@ void print_big_decimal(big_decimal num) {
   for (int i = 1; i >= 0; i--) print_decimal(num.decimals[i]);
 }
 
-void scaling(s21_decimal value_1, s21_decimal value_2, big_decimal *value_1b,
+void scaling(mo_decimal value_1, mo_decimal value_2, big_decimal *value_1b,
              big_decimal *value_2b, int scale1, int scale2) {
-  s21_decimal tmp1 = value_1;
-  s21_decimal tmp2 = value_2;
+  mo_decimal tmp1 = value_1;
+  mo_decimal tmp2 = value_2;
 
   tmp1.bits[3] = 0;
   tmp2.bits[3] = 0;
@@ -738,7 +738,7 @@ void scaling(s21_decimal value_1, s21_decimal value_2, big_decimal *value_1b,
   }
 }
 
-int addition(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
+int addition(mo_decimal value_1, mo_decimal value_2, mo_decimal *result) {
   int code = 0;
   int max_power = 0;
   big_decimal value_1b;
@@ -763,7 +763,7 @@ int addition(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
   if (res_power < 0) {
     // Анализируем степень результата на корректность
     code = 1;
-    //   *result = s21_decimal_get_inf();
+    //   *result = mo_decimal_get_inf();
   } else {
     // Если результат надо делить более, чем на 10^28, то уменьшаем его, чтобы
     // далее делить на 10^28
@@ -791,7 +791,7 @@ int addition(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     if (!binary_equal_zero(res.decimals[1]) ||
         !is_correct_decimal(res.decimals[0])) {
       code = 1;
-      // *result = s21_decimal_get_inf();
+      // *result = mo_decimal_get_inf();
     } else {
       *result = res.decimals[0];
     }
@@ -800,20 +800,20 @@ int addition(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
   return code;
 }
 
-s21_decimal abs_val(s21_decimal num) {
-  s21_decimal result = num;
+mo_decimal abs_val(mo_decimal num) {
+  mo_decimal result = num;
   set_sign(&result, 0);
   return result;
 }
 
-s21_decimal remove_trailing_zeros(s21_decimal value) {
-  s21_decimal result = value;
+mo_decimal remove_trailing_zeros(mo_decimal value) {
+  mo_decimal result = value;
   int power = get_scale(value);
   int sign = get_sign(value);
 
   if (power > 0 && is_correct_decimal(value)) {
-    s21_decimal remainder = zero_val;
-    s21_decimal tmp = value;
+    mo_decimal remainder = zero_val;
+    mo_decimal tmp = value;
     tmp.bits[3] = 0;
 
     // Делим число на 10, уменьшая степень decimal, до тех пор, пока остаток от
@@ -834,10 +834,10 @@ s21_decimal remove_trailing_zeros(s21_decimal value) {
   return result;
 }
 
-int less(s21_decimal value_1, s21_decimal value_2) {
+int less(mo_decimal value_1, mo_decimal value_2) {
   int code = 0;
-  s21_decimal tmp1 = value_1;
-  s21_decimal tmp2 = value_2;
+  mo_decimal tmp1 = value_1;
+  mo_decimal tmp2 = value_2;
   big_decimal tmp1l;
   big_decimal tmp2l;
   int scale1 = get_scale(value_1);
@@ -858,11 +858,11 @@ int less(s21_decimal value_1, s21_decimal value_2) {
   return code;
 }
 
-s21_decimal round_banking(s21_decimal integral, s21_decimal fractional) {
-  s21_decimal zero_dot_five = zero_dot_five_val;
-  s21_decimal result;
+mo_decimal round_banking(mo_decimal integral, mo_decimal fractional) {
+  mo_decimal zero_dot_five = zero_dot_five_val;
+  mo_decimal result;
 
-  if (s21_is_equal(fractional, zero_dot_five)) {
+  if (mo_is_equal(fractional, zero_dot_five)) {
     // Если дробная часть ровно 0.5
     if ((integral.bits[0] & 1) != 1) {
       // Если целая часть четная, то оставляем её
@@ -871,7 +871,7 @@ s21_decimal round_banking(s21_decimal integral, s21_decimal fractional) {
       // Если целая часть нечетная, то увеличиваем её на 1
       result = binary_add(integral, one_val);
     }
-  } else if (s21_is_greater(fractional, zero_dot_five)) {
+  } else if (mo_is_greater(fractional, zero_dot_five)) {
     // Если дробная часть > 0.5, то увеличиваем целую часть на 1
     result = binary_add(integral, one_val);
   } else {
@@ -882,7 +882,7 @@ s21_decimal round_banking(s21_decimal integral, s21_decimal fractional) {
   return result;
 }
 
-int subtraction(s21_decimal num1, s21_decimal num2, s21_decimal *result) {
+int subtraction(mo_decimal num1, mo_decimal num2, mo_decimal *result) {
   int code = 0;
   int max_power;
   big_decimal value_1b;
@@ -905,7 +905,7 @@ int subtraction(s21_decimal num1, s21_decimal num2, s21_decimal *result) {
   if (res_power < 0) {
     // Анализируем степень результата на корректность
     code = 1;
-    //  *result = s21_decimal_get_inf();
+    //  *result = mo_decimal_get_inf();
   } else {
     big_decimal remainder = decimal_to_big_decimal(zero_val);
     big_decimal powerten = decimal_to_big_decimal(ten_pows[shift]);
@@ -928,7 +928,7 @@ int subtraction(s21_decimal num1, s21_decimal num2, s21_decimal *result) {
   return code;
 }
 
-int multiplication(s21_decimal num1, s21_decimal num2, s21_decimal *result) {
+int multiplication(mo_decimal num1, mo_decimal num2, mo_decimal *result) {
   int code = 0;
   int power1 = get_scale(num1);
   int power2 = get_scale(num2);
@@ -949,7 +949,7 @@ int multiplication(s21_decimal num1, s21_decimal num2, s21_decimal *result) {
   if (res_power < 0) {
     // Анализируем степень результата на корректность
     code = 1;
-    //  *result = s21_decimal_get_inf();
+    //  *result = mo_decimal_get_inf();
   } else {
     // Если результат надо делить более, чем на 10^28, то уменьшаем его, чтобы
     // далее делить на 10^28
@@ -990,7 +990,7 @@ int multiplication(s21_decimal num1, s21_decimal num2, s21_decimal *result) {
     if (!binary_equal_zero(res.decimals[1]) ||
         !is_correct_decimal(res.decimals[0])) {
       code = 1;
-      //  *result = s21_decimal_get_inf();
+      //  *result = mo_decimal_get_inf();
     } else {
       *result = res.decimals[0];
     }
@@ -1000,7 +1000,7 @@ int multiplication(s21_decimal num1, s21_decimal num2, s21_decimal *result) {
 }
 
 int division(big_decimal value_2b, big_decimal res, big_decimal remainder,
-             s21_decimal *result) {
+             mo_decimal *result) {
   int code = 0;
 
   // рассчитываем дробную часть нашего результата и получаем в res результат,
@@ -1017,14 +1017,14 @@ int division(big_decimal value_2b, big_decimal res, big_decimal remainder,
   // Устанавливаем полученную степень для нашего остатка
   set_scale(&tmp_res.decimals[0], power2);
 
-  if (s21_is_equal(tmp_res.decimals[0], zero_dot_five_val)) {
+  if (mo_is_equal(tmp_res.decimals[0], zero_dot_five_val)) {
     if (!binary_equal_zero(remainder.decimals[0]) ||
         !binary_equal_zero(remainder.decimals[1])) {
       // Если остаток от деления в виде decimal получился ровно 0.5, но после
       // вычисления остаток от деления не равен 0, то корректируем остаток, т.к.
       // фактически он больше 0.5: 0.5 + 0.0000000000000000000000000001 =
       // 0.5000000000000000000000000001
-      s21_add(tmp_res.decimals[0], min_val, &tmp_res.decimals[0]);
+      mo_add(tmp_res.decimals[0], min_val, &tmp_res.decimals[0]);
     }
   }
   // Выполняем банковское округления результата, исходя из остатка от деления
@@ -1035,7 +1035,7 @@ int division(big_decimal value_2b, big_decimal res, big_decimal remainder,
   if (!binary_equal_zero(res.decimals[1]) ||
       !is_correct_decimal(res.decimals[0])) {
     code = 1;
-    //  *result = s21_decimal_get_inf();
+    //  *result = mo_decimal_get_inf();
   } else {
     *result = res.decimals[0];
   }
@@ -1083,15 +1083,15 @@ int calc_fractional(big_decimal *res, big_decimal value_2b,
 
   return power;
 }
-void decimal_round(s21_decimal *num) {
-  s21_decimal integer = zero_val;
-  s21_decimal fraction = zero_val;
+void decimal_round(mo_decimal *num) {
+  mo_decimal integer = zero_val;
+  mo_decimal fraction = zero_val;
   float float_fraction = 0;
   char float_str[64];
 
-  s21_truncate(*num, &integer);
-  s21_sub(*num, integer, &fraction);
-  s21_from_decimal_to_float(fraction, &float_fraction);
+  mo_truncate(*num, &integer);
+  mo_sub(*num, integer, &fraction);
+  mo_from_decimal_to_float(fraction, &float_fraction);
 
   float multiplier = pow(10, 6);
   float_fraction = roundf(float_fraction * multiplier) / multiplier;
@@ -1099,5 +1099,5 @@ void decimal_round(s21_decimal *num) {
   sprintf(float_str, "%.6E", fabsf(float_fraction));
   fraction = float_string_to_decimal(float_str);
 
-  s21_add(fraction, integer, num);
+  mo_add(fraction, integer, num);
 }

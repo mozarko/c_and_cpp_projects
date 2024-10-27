@@ -5,7 +5,7 @@ GCOVFL = -fprofile-arcs -ftest-coverage
 CHECKFL = $(shell pkg-config --cflags --libs check)
 
 #-----------------TARGETS-------------------
-TRGT = s21_decimal.a
+TRGT = mo_decimal.a
 TEST_EXE = test
 TEST_EXE_GCOV = test_gcov
 OS = $(shell uname -s)
@@ -16,7 +16,7 @@ OBJ_DIR = ./objs
 GCOV_DIR = ./gcov
 TEST_SRC_DIR = ./tests
 TEST_OBJ_DIR = ./tests/objs
-SRC = $(shell find $(SRC_DIR) -name "s21_*.c")
+SRC = $(shell find $(SRC_DIR) -name "mo_*.c")
 TEST_SRC = $(shell find $(TEST_SRC_DIR) -name "*.c")
 
 #-----------------OBJECTS-------------------
@@ -54,10 +54,10 @@ test: MK $(TRGT) main.o $(TEST_OBJS)
 main.o: main.c
 	$(CC) $(CFL) main.c -o $(OBJ_DIR)/main.o
 
-$(OBJS): $(OBJ_DIR)%.o: $(SRC_DIR)%.c s21_decimal.h
+$(OBJS): $(OBJ_DIR)%.o: $(SRC_DIR)%.c mo_decimal.h
 	$(CC) $(CFL) -o $@ -c $<
 
-$(TEST_OBJS): $(TEST_OBJ_DIR)%.o: $(TEST_SRC_DIR)%.c tests_includes/s21_tests.h
+$(TEST_OBJS): $(TEST_OBJ_DIR)%.o: $(TEST_SRC_DIR)%.c tests_includes/mo_tests.h
 	$(CC) $(CFL) -o $@ -c $<
 
 
@@ -70,10 +70,10 @@ ifeq ($(OS), Linux)
 endif
 
 
-$(GCOV_OBJS): $(GCOV_DIR)%.o: $(SRC_DIR)%.c s21_decimal.h
+$(GCOV_OBJS): $(GCOV_DIR)%.o: $(SRC_DIR)%.c mo_decimal.h
 	$(CC) $(CFL) $(GCOVFL) -o $@ -c $<
 
-$(GCOV_TEST_OBJS): $(GCOV_DIR)%.o: $(TEST_SRC_DIR)%.c tests_includes/s21_tests.h
+$(GCOV_TEST_OBJS): $(GCOV_DIR)%.o: $(TEST_SRC_DIR)%.c tests_includes/mo_tests.h
 	$(CC) $(CFL) $(GCOVFL) -o $@ -c $<
 
 main_gcov:

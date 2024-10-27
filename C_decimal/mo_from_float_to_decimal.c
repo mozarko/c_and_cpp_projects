@@ -1,6 +1,6 @@
-#include "s21_decimal.h"
+#include "mo_decimal.h"
 
-int s21_from_float_to_decimal(float src, s21_decimal *dst) {
+int mo_from_float_to_decimal(float src, mo_decimal *dst) {
   int code = 0;
   if (!dst) {
     code = 1;
@@ -15,7 +15,7 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
   } else if (isinf(src) || isnan(src)) {
     // Отдельно обрабатываем +inf, -inf, +nan, и -nan
     code = 1;
-    // *dst = s21_decimal_get_inf();
+    // *dst = mo_decimal_get_inf();
     if (signbit(src) != 0) {
       // Добавляем знак для -nan и -inf
       set_sign(dst, 1);
@@ -24,7 +24,7 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
     // MAX_FLOAT_TO_CONVERT - максимальное число, которое можно сконвертировать
     // в decimal
     code = 1;
-    // *dst = s21_decimal_get_inf();
+    // *dst = mo_decimal_get_inf();
     if (signbit(src) != 0) {
       // Добавляем знак для для отрицательного числа
       set_sign(dst, 1);
@@ -36,7 +36,7 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
     *dst = zero_val;
   } else {
     *dst = zero_val;
-    s21_decimal result;
+    mo_decimal result;
     char flt[64];
 
     // Приводим float в научную запись - одна цифра до запятой и 6 цифр после
